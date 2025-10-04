@@ -1,0 +1,301 @@
+specVersion: 0.0.6
+schema:
+  file: ./schema.graphql
+
+# NOTE: Replace network with your Graph Node configured network name.
+# For self-hosted Graph Node, you can add a custom network 'paxeer' (chainId: 80000).
+dataSources:
+  - kind: ethereum
+    name: TraderVaultFactory
+    network: paxeer
+    source:
+      address: '0x53A2d0aAF2d405C34940b8507003Af0D98f1CA12'
+      abi: TraderVaultFactory
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Vault
+        - VaultEvent
+      abis:
+        - name: TraderVaultFactory
+          file: ../artifacts/contracts/core/TraderVaultFactory.sol/TraderVaultFactory.json
+      eventHandlers:
+        - event: VaultDeployed(indexed address,indexed address,uint256,uint256)
+          handler: handleVaultDeployed
+        - event: VaultFunded(indexed address,uint256)
+          handler: handleVaultFunded
+        - event: ConfigUpdated(uint256,uint256,uint256,uint256)
+          handler: handleConfigUpdated
+      file: ./mappings/TraderVaultFactory.ts
+
+  - kind: ethereum
+    name: TreasuryManager
+    network: paxeer
+    source:
+      address: '0x4B2E8B4850f9EDf3509eeeAf664f5D6Cc2178fF8'
+      abi: TreasuryManager
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Treasury
+        - TreasuryEvent
+      abis:
+        - name: TreasuryManager
+          file: ../artifacts/contracts/governance/TreasuryManager.sol/TreasuryManager.json
+      eventHandlers:
+        - event: CapitalDeposited(indexed address,uint256)
+          handler: handleCapitalDeposited
+        - event: CapitalWithdrawn(indexed address,uint256)
+          handler: handleCapitalWithdrawn
+        - event: CapitalAllocated(indexed address,uint256)
+          handler: handleCapitalAllocated
+        - event: ProfitReceived(indexed address,uint256)
+          handler: handleProfitReceived
+      file: ./mappings/TreasuryManager.ts
+
+  - kind: ethereum
+    name: TradingVault
+    network: paxeer
+    source:
+      address: '0x7aA4C34351905Ea0521C3c327ED44558157bb5Ac'
+      abi: TradingVault
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TradingVaultEntity
+        - TradingVaultEvent
+      abis:
+        - name: TradingVault
+          file: ../artifacts/contracts/synthetics/TradingVault.sol/TradingVault.json
+      eventHandlers:
+        - event: CollateralDeposited(indexed address,uint256)
+          handler: handleCollateralDeposited
+        - event: CollateralWithdrawn(indexed address,uint256)
+          handler: handleCollateralWithdrawn
+        - event: CollateralAllocated(indexed address,uint256)
+          handler: handleCollateralAllocated
+        - event: CollateralReleased(indexed address,uint256)
+          handler: handleCollateralReleased
+        - event: ExposureUpdated(indexed address,uint256,uint256)
+          handler: handleExposureUpdated
+        - event: TraderAuthorized(indexed address,bool)
+          handler: handleTraderAuthorized
+        - event: ExposureRatioUpdated(uint256,uint256)
+          handler: handleExposureRatioUpdated
+        - event: CollateralRatioUpdated(uint256,uint256)
+          handler: handleCollateralRatioUpdated
+        - event: TradingPaused(uint256,string)
+          handler: handleTradingPaused
+      file: ./mappings/TradingVault.ts
+
+  - kind: ethereum
+    name: OracleRegistry
+    network: paxeer
+    source:
+      address: '0xA10506DEabD72f3708a7DAeB654b4925d0081253'
+      abi: OracleRegistry
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OracleRegistryEntry
+      abis:
+        - name: OracleRegistry
+          file: ../artifacts/contracts/synthetics/OracleRegistry.sol/OracleRegistry.json
+      eventHandlers:
+        - event: OracleRegistered(indexed string,indexed address)
+          handler: handleOracleRegistered
+        - event: OracleUpdated(indexed string,indexed address,indexed address)
+          handler: handleOracleUpdated
+        - event: OracleRemoved(indexed string,indexed address)
+          handler: handleOracleRemoved
+      file: ./mappings/OracleRegistry.ts
+
+  - kind: ethereum
+    name: EvaluationManager
+    network: paxeer
+    source:
+      address: '0xB03A50e11f9dF169B46dF31189A4544ad727Acb5'
+      abi: EvaluationManager
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Evaluation
+        - VirtualTrade
+        - Trader
+      abis:
+        - name: EvaluationManager
+          file: ../artifacts/contracts/core/EvaluationManager.sol/EvaluationManager.json
+      eventHandlers:
+        - event: EvaluationStarted(indexed address,indexed uint256,uint256,uint256)
+          handler: handleEvaluationStarted
+        - event: VirtualTradeExecuted(indexed address,indexed uint256,string,uint256,bool,uint256)
+          handler: handleVirtualTradeExecuted
+        - event: VirtualTradeClosed(indexed address,indexed uint256,uint256,int256,uint256)
+          handler: handleVirtualTradeClosed
+        - event: EvaluationPassed(indexed address,indexed uint256,uint256,uint256)
+          handler: handleEvaluationPassed
+        - event: EvaluationFailed(indexed address,indexed uint256,string,uint256)
+          handler: handleEvaluationFailed
+        - event: RulesUpdated(uint256,uint256,uint256,uint256)
+          handler: handleRulesUpdated
+      file: ./mappings/EvaluationManager.ts
+
+  - kind: ethereum
+    name: ReputationNFT
+    network: paxeer
+    source:
+      address: '0x202B81a89Adc1039656E78ea1749A038155d8540'
+      abi: ReputationNFT
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ReputationCredential
+        - Trader
+      abis:
+        - name: ReputationNFT
+          file: ../artifacts/contracts/reputation/ReputationNFT.sol/ReputationNFT.json
+      eventHandlers:
+        - event: CredentialMinted(indexed address,indexed uint256,uint256,uint256)
+          handler: handleCredentialMinted
+        - event: CredentialRevoked(indexed address,indexed uint256,string)
+          handler: handleCredentialRevoked
+        - event: BaseURIUpdated(string)
+          handler: handleBaseURIUpdated
+      file: ./mappings/ReputationNFT.ts
+
+  # Directly index known price oracles
+  - kind: ethereum
+    name: PriceOracleBTC
+    network: paxeer
+    source:
+      address: '0x729e3c277CDE256dBD54Af517998719Bc6a821B4'
+      abi: PriceOracle
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Oracle
+        - PriceTick
+      abis:
+        - name: PriceOracle
+          file: ../artifacts/contracts/synthetics/PriceOracle.sol/PriceOracle.json
+      eventHandlers:
+        - event: PriceUpdated(indexed uint256,uint256,uint256,indexed address)
+          handler: handlePriceUpdated
+        - event: FeederAuthorized(indexed address,bool)
+          handler: handleFeederAuthorized
+        - event: MaxDeviationUpdated(uint256,uint256)
+          handler: handleMaxDeviationUpdated
+        - event: HeartbeatUpdated(uint256,uint256)
+          handler: handleHeartbeatUpdated
+        - event: PricesFrozen(uint256)
+          handler: handlePricesFrozen
+      file: ./mappings/PriceOracleBTC.ts
+
+  - kind: ethereum
+    name: PriceOracleETH
+    network: paxeer
+    source:
+      address: '0xc60792a2de58D4D822BF2C7fBA56528e0c3701C5'
+      abi: PriceOracle
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Oracle
+        - PriceTick
+      abis:
+        - name: PriceOracle
+          file: ../artifacts/contracts/synthetics/PriceOracle.sol/PriceOracle.json
+      eventHandlers:
+        - event: PriceUpdated(indexed uint256,uint256,uint256,indexed address)
+          handler: handlePriceUpdated
+        - event: FeederAuthorized(indexed address,bool)
+          handler: handleFeederAuthorized
+        - event: MaxDeviationUpdated(uint256,uint256)
+          handler: handleMaxDeviationUpdated
+        - event: HeartbeatUpdated(uint256,uint256)
+          handler: handleHeartbeatUpdated
+        - event: PricesFrozen(uint256)
+          handler: handlePricesFrozen
+      file: ./mappings/PriceOracleETH.ts
+
+templates:
+  - kind: ethereum/contract
+    name: TraderVaultTemplate
+    network: paxeer
+    source:
+      abi: TraderVault
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Vault
+        - VaultEvent
+      abis:
+        - name: TraderVault
+          file: ../artifacts/contracts/synthetics/TradingVault.sol/TradingVault.json
+      eventHandlers:
+        - event: LiveTradeExecuted(indexed uint256,string,uint256,bool,uint256,uint256)
+          handler: handleLiveTradeExecuted
+        - event: TradeClosed(indexed uint256,uint256,int256,uint256)
+          handler: handleTradeClosed
+        - event: PayoutExecuted(uint256,uint256,uint256)
+          handler: handlePayoutExecuted
+        - event: DailyLossLimitHit(uint256,uint256)
+          handler: handleDailyLossLimitHit
+        - event: VaultPaused(uint256,string)
+          handler: handleVaultPaused
+      file: ./mappings/TraderVault.ts
+
+  - kind: ethereum/contract
+    name: PriceOracleTemplate
+    network: paxeer
+    source:
+      abi: PriceOracle
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Oracle
+        - PriceTick
+      abis:
+        - name: PriceOracle
+          file: ../artifacts/contracts/synthetics/PriceOracle.sol/PriceOracle.json
+      eventHandlers:
+        - event: PriceUpdated(indexed uint256,uint256,uint256,indexed address)
+          handler: handlePriceUpdated
+        - event: FeederAuthorized(indexed address,bool)
+          handler: handleFeederAuthorized
+        - event: MaxDeviationUpdated(uint256,uint256)
+          handler: handleMaxDeviationUpdated
+        - event: HeartbeatUpdated(uint256,uint256)
+          handler: handleHeartbeatUpdated
+        - event: PricesFrozen(uint256)
+          handler: handlePricesFrozen
+      file: ./mappings/PriceOracle.ts

@@ -1,0 +1,167 @@
+# ChainFlow Subgraph Schema
+# Network: Paxeer
+
+# Global entities
+
+type Factory @entity {
+  id: ID!
+  owner: Bytes
+  defaultInitialCapital: BigInt
+  defaultMaxPositionSize: BigInt
+  defaultMaxDailyLoss: BigInt
+  defaultProfitSplitBps: Int
+  totalVaults: Int!
+  createdAt: BigInt
+  updatedAt: BigInt
+}
+
+type Vault @entity {
+  id: ID!
+  trader: Bytes!
+  factory: Bytes!
+  initialCapital: BigInt!
+  profitSplitBps: Int
+  currentBalance: BigInt
+  highWaterMark: BigInt
+  dailyLoss: BigInt
+  createdAt: BigInt!
+  updatedAt: BigInt
+}
+
+type VaultEvent @entity {
+  id: ID!
+  vault: Vault!
+  kind: String!
+  positionId: BigInt
+  symbol: String
+  size: BigInt
+  isLong: Boolean
+  entryPrice: BigInt
+  exitPrice: BigInt
+  pnl: BigInt
+  amount: BigInt
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+type Treasury @entity {
+  id: ID!
+  totalAllocated: BigInt!
+  totalProfitCollected: BigInt!
+  updatedAt: BigInt
+}
+
+type TreasuryEvent @entity {
+  id: ID!
+  treasury: Treasury!
+  kind: String!
+  vault: Bytes
+  amount: BigInt
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+type TradingVaultEntity @entity {
+  id: ID!
+  totalCollateral: BigInt!
+  totalExposure: BigInt!
+  maxExposureRatio: Int
+  minCollateralRatio: Int
+  updatedAt: BigInt
+}
+
+type TradingVaultEvent @entity {
+  id: ID!
+  tradingVault: TradingVaultEntity!
+  kind: String!
+  trader: Bytes
+  amount: BigInt
+  oldExposure: BigInt
+  newExposure: BigInt
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+type Oracle @entity {
+  id: ID!
+  symbol: String!
+  latestPrice: BigInt
+  latestTimestamp: BigInt
+  latestRoundId: BigInt
+  maxDeviationBps: Int
+  heartbeatSec: Int
+  updatedAt: BigInt
+}
+
+type PriceTick @entity {
+  id: ID!
+  oracle: Oracle!
+  roundId: BigInt!
+  price: BigInt!
+  timestamp: BigInt!
+  feeder: Bytes!
+  txHash: Bytes!
+}
+
+type OracleRegistryEntry @entity {
+  id: ID!
+  symbol: String!
+  oracle: Bytes!
+  updatedAt: BigInt
+}
+
+type Evaluation @entity {
+  id: ID!
+  trader: Bytes!
+  evaluationId: BigInt!
+  startTime: BigInt!
+  isActive: Boolean!
+  passed: Boolean!
+  failed: Boolean!
+  virtualBalance: BigInt!
+  highWaterMark: BigInt!
+  currentDrawdownBps: Int!
+  tradeCount: Int!
+  finalBalance: BigInt
+}
+
+type VirtualTrade @entity {
+  id: ID!
+  trader: Bytes!
+  evaluation: Evaluation!
+  positionId: BigInt!
+  symbol: String!
+  size: BigInt!
+  isLong: Boolean!
+  entryPrice: BigInt!
+  exitPrice: BigInt
+  pnl: BigInt
+  openTime: BigInt!
+  txOpen: Bytes!
+  closeTime: BigInt
+  txClose: Bytes
+}
+
+type ReputationCredential @entity {
+  id: ID!
+  trader: Bytes!
+  tokenId: BigInt!
+  evaluationId: BigInt!
+  finalBalance: BigInt!
+  profitAchieved: BigInt!
+  maxDrawdown: BigInt!
+  totalTrades: BigInt!
+  winRateBps: Int!
+  mintedAt: BigInt!
+  revokedAt: BigInt
+  isValid: Boolean!
+}
+
+type Trader @entity {
+  id: ID!
+  hasCredential: Boolean!
+  currentEvaluationId: BigInt
+  credentialTokenId: BigInt
+  vault: Bytes
+  updatedAt: BigInt
+}

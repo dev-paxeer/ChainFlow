@@ -1,0 +1,16 @@
+{
+  "name": "chainflow-subgraph",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "create-local": "graph create chainflow-subgraph --node http://localhost:8020",
+    "deploy-local": "graph deploy chainflow-subgraph --ipfs http://localhost:5001 --node http://localhost:8020",
+    "deploy-remote": "graph deploy chainflow-subgraph --ipfs https://ipfs.thegraph.com --node https://api.thegraph.com/deploy"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.64.0",
+    "@graphprotocol/graph-ts": "^0.34.0"
+  }
+}
