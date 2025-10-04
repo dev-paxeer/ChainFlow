@@ -1,0 +1,63 @@
+{
+  "timestamp": "2025-10-04T10:42:00.021Z",
+  "network": "paxeer",
+  "chainId": 80000,
+  "deployer": "0xF93C8d97df98110E42f2Ad332c164a0bA25beAa8",
+  "contracts": [
+    {
+      "name": "Math",
+      "address": "0xD4d37681FBd276d45B867A28668C09fB115C47De",
+      "verified": true
+    },
+    {
+      "name": "SafetyChecks",
+      "address": "0x9EE12BEe3f246f4Cb30Be3b558b49ec9c60afB20",
+      "verified": true
+    },
+    {
+      "name": "PositionManager",
+      "address": "0xf233245A1Ed5A118c2e3085d564B03e87ADCd8D6",
+      "verified": true
+    },
+    {
+      "name": "ReputationNFT",
+      "address": "0x202B81a89Adc1039656E78ea1749A038155d8540",
+      "verified": true
+    },
+    {
+      "name": "OracleRegistry",
+      "address": "0xA10506DEabD72f3708a7DAeB654b4925d0081253",
+      "verified": true
+    },
+    {
+      "name": "BTCOracle",
+      "address": "0x729e3c277CDE256dBD54Af517998719Bc6a821B4",
+      "verified": true
+    },
+    {
+      "name": "ETHOracle",
+      "address": "0xc60792a2de58D4D822BF2C7fBA56528e0c3701C5",
+      "verified": true
+    },
+    {
+      "name": "TreasuryManager",
+      "address": "0x4B2E8B4850f9EDf3509eeeAf664f5D6Cc2178fF8",
+      "verified": true
+    },
+    {
+      "name": "TradingVault",
+      "address": "0x7aA4C34351905Ea0521C3c327ED44558157bb5Ac",
+      "verified": true
+    },
+    {
+      "name": "EvaluationManager",
+      "address": "0xB03A50e11f9dF169B46dF31189A4544ad727Acb5",
+      "verified": true
+    },
+    {
+      "name": "TraderVaultFactory",
+      "address": "0x53A2d0aAF2d405C34940b8507003Af0D98f1CA12",
+      "verified": true
+    }
+  ]
+}
