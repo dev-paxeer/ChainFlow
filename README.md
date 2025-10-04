@@ -8,7 +8,7 @@ A fully on-chain proprietary trading firm platform with synthetic asset trading,
 ## Project Structure
 
 ```
-chaintrack-propfirm/
+chainflow/
 ├── contracts/
 │   ├── core/
 │   │   ├── EvaluationManager.sol
