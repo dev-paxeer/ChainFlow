@@ -51,9 +51,9 @@ Our system is divided into three distinct layers: the on-chain protocol, the off
 
 ```mermaid
 flowchart LR
-  A[Trader] -->|Browser/PWA| B[Frontend (Next.js, TS)]
-  B -->|REST & WebSocket| C[Backend API (Node/TS)]
-  C -->|RPC/Events| D[Smart Contracts (Solidity)]
+  A[Trader] -->|Browser/PWA| B["Frontend (Next.js, TS)"]
+  B -->|REST & WebSocket| C["Backend API (Node/TS)"]
+  C -->|RPC/Events| D["Smart Contracts (Solidity)"]
   D -->|Events| C
   B -->|Static & Media| E[Nginx + TLS]
   E -->|Reverse Proxy| B & C
