@@ -1,262 +1,216 @@
-# ChainFlow - Complete Implementation Summary
+# ChainFlow ⛓️ — Fully On-Chain, Trustless Prop Trading Platform
 
+A decentralized, transparent, and automated prop firm engineered for the future of trading. ChainFlow unites a fully on-chain evaluation and risk engine with a production-grade application stack for onboarding, KYC, trading UX, analytics, and operations.
 
+**Live Dashboard:** **[https://dashboard.paxeer.app](https://dashboard.paxeer.app)**
 
-### Smart Contracts (11 Total)
+> Our vision is to build provably fair, trustless trading infrastructure that removes human bottlenecks. We put prop trading rules on-chain, making them open, immutable, and auditable by anyone, delivering instant access and payouts with no opaque processes or centralized gatekeepers.
 
-#### Core Contracts (4)
-1. ✅ **EvaluationManager.sol** - Virtual trading evaluation system
-2. ✅ **TraderVault.sol** - Individual funded trader accounts
-3. ✅ **TraderVaultFactory.sol** - Vault deployment and management
-4. ✅ **ProfitSplitter.sol** - Implemented within TraderVault
+-----
 
-#### Infrastructure (2)
-5. ✅ **TreasuryManager.sol** - Firm capital management
-6. ✅ **TradingVault.sol** - Collateral pool for positions
+## 📋 Table of Contents
 
-#### Oracle System (2)
-7. ✅ **PriceOracle.sol** - Per-asset price feeds with TWAP
-8. ✅ **OracleRegistry.sol** - Central oracle management
+  - [✨ Why It's Revolutionary](https://www.google.com/search?q=%23-why-its-revolutionary)
+  - [🎯 Unique Selling Points](https://www.google.com/search?q=%23-unique-selling-points)
+  - [🏗️ High-Level Architecture](https://www.google.com/search?q=%23%EF%B8%8F-high-level-architecture)
+  - [🔧 Technology Stack](https://www.google.com/search?q=%23-technology-stack)
+  - [🚀 Core Features](https://www.google.com/search?q=%23-core-features)
+  - [⚙️ Getting Started (Development)](https://www.google.com/search?q=%23%EF%B8%8F-getting-started-development)
+  - [🔌 API Highlights](https://www.google.com/search?q=%23-api-highlights)
+  - [🛡️ Security & Compliance](https://www.google.com/search?q=%23%EF%B8%8F-security--compliance)
+  - [🗺️ Roadmap](https://www.google.com/search?q=%23%EF%B8%8F-roadmap)
+  - [📜 License](https://www.google.com/search?q=%23-license)
 
-#### Reputation System (1)
-9. ✅ **ReputationNFT.sol** - Soulbound trader credentials
+-----
 
-#### Libraries (3)
-10. ✅ **Math.sol** - Mathematical operations
-11. ✅ **SafetyChecks.sol** - Risk validation
-12. ✅ **PositionManager.sol** - Position management
+## ✨ Why It's Revolutionary
 
-### Deployment Scripts (9 Files)
+ChainFlow is not just another trading platform; it's a paradigm shift. By enforcing all prop firm rules in smart contracts, we eliminate the need for trust in centralized operators.
 
-#### Individual Deployment Scripts
-- ✅ `01-deploy-reputation.js` - Deploy ReputationNFT
-- ✅ `02-deploy-oracles.js` - Deploy oracle infrastructure
-- ✅ `03-deploy-treasury.js` - Deploy TreasuryManager
-- ✅ `04-deploy-trading-vault.js` - Deploy TradingVault
-- ✅ `05-deploy-evaluation.js` - Deploy EvaluationManager
-- ✅ `06-deploy-vault-factory.js` - Deploy TraderVaultFactory
+  - **Eliminates Centralized Trust**: All evaluation, risk gating, and profit distribution are automated with zero manual intervention. No more ad-hoc exceptions or opaque processes.
+  - **Radical Transparency**: The rules are the same for everyone—open, immutable, and verifiable on the blockchain. No favoritism or hidden levers.
+  - **Automated & Scalable**: Deterministic on-chain logic allows the platform to support an unlimited number of traders with instant access and payouts.
 
-#### Orchestration
-- ✅ `deploy-all.js` - Complete system deployment
-
-#### Utilities
-- ✅ `constants.js` - Configuration constants
-- ✅ `helpers.js` - Deployment helper functions
-
-### Test Suite (5 Files)
-
-#### Unit Tests
-- ✅ `Math.test.js` - Library function tests
-- ✅ `ReputationNFT.test.js` - NFT functionality tests
-
-#### Integration Tests
-- ✅ `evaluation-flow.test.js` - Complete evaluation lifecycle
-- ✅ `full-lifecycle.test.js` - End-to-end system test
-
-#### Test Utilities
-- ✅ `MockERC20.sol` - Mock USDC for testing
-
-### Documentation (5 Files)
-
-- ✅ `README.md` - Project overview and features
-- ✅ `QUICKSTART.md` - 5-minute setup guide
-- ✅ `DEPLOYMENT_GUIDE.md` - Comprehensive deployment instructions
-- ✅ `ARCHITECTURE.md` - System architecture overview
-- ✅ `PROJECT_SUMMARY.md` - This file
-
-### Configuration Files
-
-- ✅ `package.json` - Dependencies and scripts
-- ✅ `hardhat.config.js` - Hardhat configuration (pre-configured for Paxeer)
-- ✅ `.env` - Environment variables (PRIVATE_KEY, USDC address)
-- ✅ `.gitignore` - Git ignore rules
-
-## 🔥 Key Features Implemented
-
-### Evaluation System
-- ✅ Virtual trading with real price feeds
-- ✅ Profit target enforcement (10%)
-- ✅ Drawdown limit monitoring (5%)
-- ✅ Minimum trade requirements (anti-gaming)
-- ✅ Time-based evaluation expiry
-- ✅ Automatic NFT minting on success
-
-### Trading System
-- ✅ Isolated trader vaults (one per trader)
-- ✅ Real-time PnL tracking
-- ✅ Mandatory stop-loss enforcement
-- ✅ Daily loss limits with auto-pause
-- ✅ Position health monitoring
-- ✅ Multi-asset support (BTC, ETH, etc.)
-
-### Risk Management
-- ✅ Maximum position size limits
-- ✅ Exposure caps (80% of collateral)
-- ✅ Collateralization ratio enforcement (120%)
-- ✅ Circuit breakers on losses
-- ✅ Emergency pause mechanisms
-- ✅ Admin intervention capabilities
-
-### Profit Distribution
-- ✅ Automated 80/20 profit split
-- ✅ High water mark tracking
-- ✅ Instant on-chain payouts
-- ✅ Treasury profit collection
-
-### Oracle System
-- ✅ High-frequency price updates
-- ✅ TWAP calculation (manipulation resistant)
-- ✅ Staleness detection
-- ✅ Deviation limits (5% max)
-- ✅ Multiple asset support
-- ✅ Heartbeat monitoring
-
-### Security Features
-- ✅ Reentrancy protection (all state-changing functions)
-- ✅ Access control (OpenZeppelin roles)
-- ✅ Pausable contracts
-- ✅ Input validation
-- ✅ SafeMath operations
-- ✅ Events for all critical actions
-
-## 📊 System Parameters
-
-### Evaluation Defaults
-- Virtual Balance: 10,000 USDC
-- Profit Target: 10% (1,000 USDC)
-- Max Drawdown: 5%
-- Min Trades: 5
-- Period: 30 days
-- Entry Fee: 100 USDC
-
-### Vault Defaults
-- Initial Capital: 100,000 USDC
-- Max Position Size: 10,000 USDC
-- Max Daily Loss: 2,000 USDC
-- Profit Split: 80% trader / 20% firm
-
-### Risk Limits
-- Max Vault Exposure: 80%
-- Min Collateral Ratio: 120%
-- Oracle Max Deviation: 5%
-- Oracle Heartbeat: 60 seconds
-
-## 🧪 Testing Coverage
-
-- ✅ Unit tests for libraries
-- ✅ Unit tests for core contracts
-- ✅ Integration tests for evaluation flow
-- ✅ Full lifecycle end-to-end test
-- ✅ Edge case handling
-- ✅ Access control verification
-- ✅ Pause mechanism testing
-
-## 🚀 Ready for Deployment
-
-### Pre-configured Networks
-- ✅ Paxeer Network (chainId: 80000)
-- ✅ Localhost (for testing)
-
-### Deployment Checklist
-- ✅ All contracts compile successfully
-- ✅ Deployment scripts tested
-- ✅ Configuration files ready
-- ✅ Environment template provided
-- ✅ Verification scripts included
-
-## 📈 Next Steps
-
-### Before Launch
-1. Run full test suite: `npx hardhat test`
-2. Deploy to local network for testing
-3. Configure .env with production values
-4. Review and adjust parameters in constants.js
-5. Prepare multisig wallet for admin functions
-
-### Deployment
-1. Run: `npx hardhat run scripts/deploy/deploy-all.js --network paxeer`
-2. Fund TreasuryManager with USDC
-3. Fund TradingVault with collateral
-4. Set up price feeder bots
-5. Verify contracts on block explorer
-6. Transfer ownership to multisig
-
-### Post-Deployment
-1. Monitor system health
-2. Set up automated keeper bots
-3. Configure alerting
-4. Test with beta users
-5. Scale gradually
+-----
 
 ## 🎯 Unique Selling Points
 
-1. **100% On-Chain** - No centralized dependencies
-2. **Trustless** - Smart contracts enforce all rules
-3. **Transparent** - All activity verifiable
-4. **Automated** - No manual intervention needed
-5. **Secure** - Multi-layer risk management
-6. **Scalable** - Supports unlimited traders
-7. **Fair** - Same rules for everyone
+  - 💯 **100% On-Chain**: No centralized dependencies for core trading logic.
+  - 🤝 **Trustless**: Smart contracts are the ultimate arbiter of all rules.
+  - 🔍 **Transparent**: Every action and transaction is verifiable on-chain.
+  - 🤖 **Automated**: No manual intervention is needed for evaluation or payouts.
+  - 🔒 **Secure**: Multi-layer on-chain and off-chain risk management.
+  - 📈 **Scalable**: Built from the ground up to support unlimited traders.
+  - ⚖️ **Fair**: The same immutable rules apply to everyone.
 
-## 🏗️ Architecture Highlights
+-----
 
-- **Modular Design** - Each contract has single responsibility
-- **Library Pattern** - Reusable code in Math, SafetyChecks, PositionManager
-- **Factory Pattern** - TraderVaultFactory for vault deployment
-- **Registry Pattern** - OracleRegistry for oracle management
-- **Access Control** - Role-based permissions (OpenZeppelin)
-- **Pausable** - Emergency stop capability
-- **Events** - Complete audit trail
+## 🏗️ High-Level Architecture
 
-## 💡 Innovation
+Our system is divided into three distinct layers: the on-chain protocol, the off-chain application, and the supporting infrastructure. This separation ensures security, scalability, and a seamless user experience.
 
-This is one of the first fully decentralized prop firms with:
-- On-chain evaluation system
-- Automated risk management
-- Instant profit distribution
-- No withdrawal delays
-- Transparent rules
+```mermaid
+flowchart LR
+  A[Trader] -->|Browser/PWA| B[Frontend (Next.js, TS)]
+  B -->|REST & WebSocket| C[Backend API (Node/TS)]
+  C -->|RPC/Events| D[Smart Contracts (Solidity)]
+  D -->|Events| C
+  B -->|Static & Media| E[Nginx + TLS]
+  E -->|Reverse Proxy| B & C
+```
 
-## 📝 Code Quality
+  - **Protocol Layer (Solidity)**: Contains the immutable business logic, evaluation rules, payout mechanisms, and a complete audit trail via events. It is the single source of truth.
+  - **Application Layer (Next.js + Node/TS)**: Provides a polished user experience for onboarding, KYC, portfolio management, trading, analytics, and support. It is non-custodial by design.
+  - **Infrastructure Layer (Nginx, PM2, Certbot)**: A robust stack providing a secure, performant, and reliable service with TLS termination, process management, and automated SSL renewals.
 
-- ✅ Solidity 0.8.20 (latest stable)
-- ✅ OpenZeppelin contracts (audited libraries)
-- ✅ NatSpec documentation
-- ✅ Clear variable naming
-- ✅ Comprehensive comments
-- ✅ Gas optimizations
-- ✅ Best practices followed
+-----
 
-## 🔒 Security Considerations
+## 🔧 Technology Stack
 
-- Multi-signature recommended for production
-- Security audit recommended before mainnet
-- Bug bounty program recommended
-- Start with limited capital
-- Monitor closely at launch
-- Have incident response plan
+| Layer       | Technology                                                              |
+| :---------- | :---------------------------------------------------------------------- |
+| **Protocol** | `Solidity`, `OpenZeppelin`, `Hardhat`                                   |
+| **Frontend** | `Next.js`, `TypeScript`, `React`, `shadcn/ui`, `PWA`                    |
+| **Backend** | `Node.js`, `TypeScript`, `Express`, `Sequelize`, `WebSockets`           |
+| **Database** | `PostgreSQL` (via Sequelize)                                            |
+| **Infra** | `Nginx` (Reverse Proxy), `PM2` (Process Manager), `Certbot` (SSL)       |
+| **Tooling** | `pnpm` (Monorepo), `Swagger` (API Docs), `ESLint`, `Prettier`           |
 
-## 📞 Support & Maintenance
+-----
 
-All code is production-ready but should be:
-- Audited by professional firm
-- Tested with real users in beta
-- Monitored continuously
-- Updated as needed
+## 🚀 Core Features
 
-## 🎊 Conclusion
+### Protocol Layer (Solidity)
 
-**ChainFlow is fully implemented and ready for deployment!**
+  - **On-Chain Evaluation System**: All performance metrics and rules are calculated and enforced by smart contracts.
+  - **Automated Risk Management**: Smart contracts automatically gate risky trades and enforce drawdown limits.
+  - **Instant Profit Distribution**: Payouts are triggered automatically upon successful evaluation, with no withdrawal delays.
+  - **Modular & Secure Design**: Utilizes Factory and Registry patterns, role-based access control (OpenZeppelin), and a pausable emergency-stop capability.
+  - **Comprehensive Events**: A full on-chain audit trail for maximum transparency.
 
-The platform includes:
-- ✅ 11 smart contracts
-- ✅ 9 deployment scripts
-- ✅ 5 test files
-- ✅ 5 documentation files
-- ✅ Complete configuration
+### Application & Admin Layer
 
-All components are production-grade and follow best practices for security, gas efficiency, and maintainability.
+  - **Modern Trading UX**: Feature-rich interface with Limit & Market order forms, real-time market data via WebSockets, and comprehensive portfolio/history views.
+  - **Seamless Onboarding**: Integrated KYC flows with progress visualization and step-wise gating.
+  - **Public Announcements**: A dedicated API and dashboard panel to keep users informed.
+  - **Mandatory Beta Disclaimer**: Enforced at registration to ensure user awareness.
+  - **Extensive Admin UI**: A powerful back-office for managing:
+      - **CRM**: Users, Roles, KYC Applications, Support Tickets.
+      - **Finance**: Fiat/Crypto Gateways, Deposits, Withdrawals, Wallets, Transactions.
+      - **Trading Extensions**: Futures, Forex, Staking, ICOs, P2P Markets.
+      - **System**: Settings, Announcements, Cron Jobs, Logs, and more.
 
----
+-----
 
-**Built with ❤️ for the future of decentralized finance**
+## ⚙️ Getting Started (Development)
+
+Follow these steps to set up the development environment locally.
+
+### 1\. Prerequisites
+
+  - [Node.js](https://nodejs.org/) (v22.x recommended)
+  - [pnpm](https://pnpm.io/)
+  - [Nginx](https://www.nginx.com/)
+  - A `.env` file at the repository root (`/home/.env` in production) with the necessary secrets.
+
+### 2\. Installation
+
+Clone the repository and install dependencies using `pnpm`.
+
+```bash
+git clone <repository_url>
+cd <repository_name>
+pnpm install
+```
+
+### 3\. Running the Backend
+
+Build the TypeScript source and start the server with PM2.
+
+```bash
+# Build the backend
+pnpm -w --filter backend build
+
+# Start with PM2
+pm2 start backend/dist/index.js --name backend --interpreter "$(nvm which 22)" --env production
+```
+
+### 4\. Running the Frontend
+
+Build the Next.js app and start the server with PM2.
+
+```bash
+# Build the frontend
+pnpm -w --filter frontend build
+
+# Start with PM2 using the production config
+pm2 start production.config.js --env production frontend
+```
+
+### 5\. Configuring Nginx
+
+Configure Nginx as a reverse proxy. Create a config file at `/etc/nginx/sites-available/dashboard.paxeer.app.conf` and then enable it.
+
+```bash
+# Enable the site by creating a symlink
+sudo ln -sf /etc/nginx/sites-available/dashboard.paxeer.app.conf /etc/nginx/sites-enabled/
+
+# Test the configuration and reload Nginx
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+-----
+
+## 🔌 API Highlights
+
+The backend exposes a well-structured, typed API with real-time WebSocket streams.
+
+> **Swagger Docs**: The full OpenAPI specification is available at `/api/docs/swagger.json`.
+
+  - **Public**: `GET /api/public/announcements`, `GET /api/settings`
+  - **User**: `GET /api/user/kyc/level`, `POST /api/user/kyc/application`, Profile, Notifications, OTP
+  - **Finance**: Deposits (Stripe, Adyen, etc.), Withdrawals, Wallets, Transactions
+  - **Trading**: Real-time market, ticker, and order data via WebSockets and REST endpoints.
+  - **Admin**: Comprehensive endpoints for managing all aspects of the platform, from users and KYC to system settings and cron jobs.
+
+-----
+
+## 🛡️ Security & Compliance
+
+Security is our top priority. The platform is designed with a multi-layered approach to protect users and capital.
+
+  - **Non-Custodial Logic**: The backend application cannot override on-chain protocol outcomes.
+  - **End-to-End Encryption**: Full TLS termination at the Nginx reverse proxy with automated Certbot renewals.
+  - **Fine-Grained Access Control**: Granular permission strings are enforced across all admin routes.
+  - **Robust Validation**: Strong input validation and Sequelize model constraints prevent common vulnerabilities.
+  - **Best Practices**: Includes mitigations for CSRF/XSS, soft deletes (`paranoid`), and comprehensive logging.
+
+### Recommendations for Mainnet
+
+  - ✅ Commission a professional third-party audit of the protocol and application.
+  - 🐞 Launch a public bug bounty program.
+  - 📈 Implement a progressive rollout plan with initial capital limits.
+  - 📊 Establish an active monitoring and incident response plan.
+
+-----
+
+## 🗺️ Roadmap
+
+  - [ ] Persist Beta acceptance across user sessions and devices.
+  - [ ] Implement real-time announcements via WebSockets.
+  - [ ] Develop public, on-chain metrics dashboards (e.g., evaluation success rate, total payouts).
+  - [ ] Introduce fuzzing and property-based testing for protocol and app layers.
+  - [ ] Complete professional security audit and launch bug bounty program.
+  - [ ] Implement further gas optimizations based on mainnet usage data.
+
+-----
+
+## 📜 License
+
+Copyright © ChainFlow
+
+*Licensing terms to be finalized prior to general availability.*
+
+\<p align="center"\>
+Built with ❤️ for the future of decentralized finance.
+\</p\>
