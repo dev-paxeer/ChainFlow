@@ -2,7 +2,7 @@
 ## A Deep Dive into Building a Production-Grade DeFi Prop Firm
 
 **Project:** ChainFlow - Decentralized Proprietary Trading Firm Platform  
-**Network:** Paxeer Mainnet (Chain ID: 80000)  
+**Network:** Paxeer Mainnet (Chain ID: 229)  
 **Deployment Date:** October 4, 2025  
 **Total Development & Deployment Time:** ~4 hours  
 **Final Status:** ✅ **PRODUCTION READY** - All 24 Tests Passing
